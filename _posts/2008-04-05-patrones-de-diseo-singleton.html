@@ -1,0 +1,54 @@
+---
+layout: post
+title: 'Patrones de diseño: Singleton'
+date: '2008-04-05T11:12:00.015+02:00'
+author: Carlos Mayo
+tags:
+- Programación
+modified_time: '2009-07-11T15:40:50.764+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-412654331418534153
+blogger_orig_url: http://carlosmayo.blogspot.com/2008/04/patrones-de-diseo-singleton.html
+---
+
+<p>El patrón de diseño Singleton está pensado para restringir la creación de objetos de una clase determinada garantizando que sólo exista una instancia de dicha clase y proporcionar un punto de acceso global a ella.</p>
+
+<p>Un ejemplo de utilización de este patrón podría ser una clase para la conexión a la base de datos. Mediante esta clase evitaremos que haya mas de una conexión abierta a la vez en cada aplicación y en cada acceso a la base de datos que necesitemos.</p>
+
+<p>Para crear esta clase utilizando el patrón Singleton tendremos en cuenta lo siguiente:
+
+<ul>
+<li>Necesitamos un método constructor privado de forma que nadie, salvo ella misma, pueda crear una instancia de esta clase.</li>
+<li>Necesitaremos un atributo estático privado que contendrá la única instancia a esta clase.</li>
+<li>Y por último, un método estático público que creará la instancia de la clase en caso de que se llame por primera vez almacenándola en el atributo estático y luego la devolverá mediante un return.</li>
+</ul>
+</p>
+
+<p>La implementación básica en PHP sería la siguiente:</p>
+
+<pre><span style="color: #ff0000; font-weight: bold;">&lt;?php</span>
+<span style="color: #006600;">Class</span> Conexion <span style="color: #000099;">&#123;</span>
+  static <span style="color: #006600;">private</span> <span style="color: #000;">$thisInstance</span> = <span style="color: #552200;">null</span>;
+&nbsp;
+  <span style="color: #006600;">private</span> <span style="color: #0000FF;">function</span> __construct<span style="color: #000099;">&#40;</span><span style="color: #000099;">&#41;</span> <span style="color: #000099;">&#123;</span>
+    <span style="color: #0000ff;">...</span>
+  <span style="color: #000099;">&#125;</span>
+&nbsp;
+  static <span style="color: #006600;">public</span> <span style="color: #0000FF;">function</span> getInstance<span style="color: #000099;">&#40;</span><span style="color: #000099;">&#41;</span> <span style="color: #000099;">&#123;</span>
+     <span style="color: #006600;">if</span><span style="color: #000099;">&#40;</span><span style="color: #006600;">self</span><span style="color: #0000ff;">::</span><span style="color: #000;">$thisInstance</span> == <span style="color: #552200;">null</span><span style="color: #000099;">&#41;</span>
+        <span style="color: #006600;">self</span><span style="color: #0000ff;">::</span><span style="color: #000;">$thisInstance</span> = <span style="color: #006600;">new</span> Conexion<span style="color: #000099;">&#40;</span><span style="color: #000099;">&#41;</span>;
+     <span style="color: #006600;">return</span> <span style="color: #006600;">self</span><span style="color: #0000ff;">::</span><span style="color: #000;">$thisInstance</span>;
+   <span style="color: #000099;">&#125;</span>
+<span style="color: #0000ff;">....</span>
+<span style="color: #000099;">&#125;</span>
+ <span style="color: #ff0000; font-weight: bold;">?&gt;</span>
+</pre>
+<p>Cuando en alguna parte de la aplicación necesitemos acceder a la base de datos, recuperaremos la instancia de la clase y trabajaremos con ella.</p>
+
+<pre>// Obtendremos la instancia
+$db = new Conexion::getInstance();
+
+// Y ya podremos trabajar con ese objeto
+$db-&gt;exec(<span style="color:#0000ff">&quot;select * from clientes&quot;</span>);
+...</pre>
+
+<p>Este patrón suele ser utilizado en clases que acceden a un recurso único (fichero, base de datos, etc...) de forma que podremos controlar la creación de objectos que acceden a dichos recursos al tener una sola instancia.</p>

@@ -1,0 +1,66 @@
+---
+layout: post
+title: Añadiendo rutas estáticas en MacOS X
+date: '2006-05-03T19:30:00.001+02:00'
+author: Carlos Mayo
+tags:
+- Windows
+- MacOS
+modified_time: '2009-07-11T15:54:00.851+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-114632905068236796
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/05/aadiendo-rutas-estticas-en-macos-x.html
+---
+
+<img class="imagen" src="/imagenes/003.jpg" align="right"><p>Para añadir rutas estáticas en Tiger y no tener que volver a introducirlas en cada arranque, podemos utilizar el SystemStarter. El <i>SystemStarter</i> es básicamente el programa que lanza todos los servicios del sistema. Estos servicios se encuentran en los directorios <i>/System/Library/StartupItems</i> y <i>/Library/StartupItems</i>. Así que lo único que debemos hacer es crear un servicio y que cree las rutas correspondientes en cada arranque.</p>
+
+<p>Nosotros crearemos el servicio en <i>/Library/StartupItems</i> ya que este es el lugar adecuado para aplicaciones de terceros. Los pasos son los siguientes: </p>
+
+<p>Desde una sesión de terminal ejecutaremos <i>su</i> para convertirnos en <i>root</i>, y seguidamente...</p>
+
+<pre>cd /Library/StartupItems</pre>
+
+<p>Prodeceremos a crear el directorio de nuestro servicio:</p>
+
+<pre>mkdir NetworkLocal<br>cd NetworkLocal</pre>
+
+<p>Utilizando un editor de textos (p.e. <i>vi</i>), crearemos un fichero con el nombre de <i>NetworkLocal</i> que será el script que se ejecutará en cada inicio.</p>
+
+<pre class="bash" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">#!/bin/sh</span>
+&nbsp;
+. <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>rc.common
+&nbsp;
+StartService <span style="color: #7a0874; font-weight: bold;">&#40;</span><span style="color: #7a0874; font-weight: bold;">&#41;</span>
+<span style="color: #7a0874; font-weight: bold;">&#123;</span>
+   ConsoleMessage <span style="color: #ff0000;">&quot;ConfiguraciÃ³n local de la red&quot;</span>
+   route add <span style="color: #660033;">-net</span> 192.168.2.0 <span style="color: #660033;">-netmask</span> 255.255.255.0 192.168.1.1
+<span style="color: #7a0874; font-weight: bold;">&#125;</span>
+&nbsp;
+StopService <span style="color: #7a0874; font-weight: bold;">&#40;</span><span style="color: #7a0874; font-weight: bold;">&#41;</span>
+<span style="color: #7a0874; font-weight: bold;">&#123;</span>
+   <span style="color: #7a0874; font-weight: bold;">return</span> 0
+<span style="color: #7a0874; font-weight: bold;">&#125;</span>
+&nbsp;
+RestartService <span style="color: #7a0874; font-weight: bold;">&#40;</span><span style="color: #7a0874; font-weight: bold;">&#41;</span>
+<span style="color: #7a0874; font-weight: bold;">&#123;</span>
+   <span style="color: #7a0874; font-weight: bold;">return</span> <span style="color: #000000;">0</span>
+<span style="color: #7a0874; font-weight: bold;">&#125;</span>
+&nbsp;
+RunService <span style="color: #ff0000;">&quot;$1&quot;</span></pre>
+<p>Crearemos también el fichero <i>StartupParameters.plist</i> con lo siguiente:</p>
+
+<pre>
+{<br>
+  Description = "Configuración local de la red";<br>
+  Provides = ("NetworkLocal");<br>
+  Requires = ("Network");<br>
+  OrderPreference = "None";<br>
+}<br>
+</pre>
+
+<p>Y estableceremos los permisos adecuados:</p>
+
+<pre>chmod 755 NetworkLocal StartupParameters.plist</pre>
+
+<p>Ahora sólo nos queda reiniciar y comprobar que se ha cargado las rutas con el comando <i>netstat -r</i>.</p>
+
+<p>Si queréis saber mas sobre el <i>SystemStarter</i>, <a href="http://www.macprogramadores.org/tutoriales/propios/SystemStarter.pdf">aquí</a> tenéis uno válido para versiones de MacOS X 10.3 o anteriores y <a href="http://www.telefonica.net/web2/macprog/ConfiguracionArranque.pdf">otro</a> para versiones de MacOS X 10.4 o posterios. Ambos son de la página <a href="http://www.macprogramadores.org">Mac Programadores</a>.</p>

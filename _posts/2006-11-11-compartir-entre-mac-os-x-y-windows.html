@@ -1,0 +1,28 @@
+---
+layout: post
+title: Compartir entre Mac OS X y Windows
+date: '2006-11-11T17:19:00.001+01:00'
+author: Carlos Mayo
+tags:
+- MacOS
+modified_time: '2009-07-11T15:50:03.533+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-9063852256899690424
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/11/compartir-entre-mac-os-x-y-windows.html
+---
+
+<p>He leído en varios foros de Mac cómo la gente pregunta sobre la posibilidad de acceder desde Windows a recursos compartidos, tales como archivos e impresoras, de Mac OS X.</p>
+
+<p>Para compartir archivos con una persona que use Windows, tendremos que activar el servicio <i>Compartir Windows</i> en <i>Preferencias del sistema -> Compartir</i>. Una vez activado, pocederemos a acceder desde el Explorador de Windows a la dirección \\ip_del_mac\usuario_del_mac (p.e. \\192.168.1.2\pepito), nos preguntará por el usuario y contraseña y tendremos acceso a todo el directorio de ese usuario.</p>
+
+<p>Si lo que queremos es compartir una unidad externa o cualquier otro directorio distinto al del usuario, la única solución es modificar el fichero <i>/etc/smb.conf</i>, añadiendo algo parecido a:</p>
+
+<pre>[unidad_externa]<br>
+  comment = Unidad Externa<br>
+  path = /Volumes/nombre_de_la_unidad<br>
+  read only = no<br>
+  browseable = yes<br>
+  create mode = 755</pre>
+
+<p>Y una vez reiniciado el servicio de samba (sudo killall -HUP smbd), podremos ver este recurso compartido accediendo a \\ip_del_mac\unidad_externa.</p>
+
+<p>Por último, para compartir una impresora conectada directamente al Mac (por USB), se debe habilitar además el servicio <i>Compartir Impresora</i> en <i>Preferencias del sistema -> Compartir</i>. Luego, para configurarla en Windows, se debe añadir como impresora de red o conectada a otro equipo y conectarse la impresora \\ip_del_mac\nombre_de_la_impresora.</p>

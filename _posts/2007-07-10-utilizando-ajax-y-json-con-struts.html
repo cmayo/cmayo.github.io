@@ -1,0 +1,66 @@
+---
+layout: post
+title: Utilizando Ajax y JSON con Struts
+date: '2007-07-10T14:23:00.001+02:00'
+author: Carlos Mayo
+tags:
+- Programación
+modified_time: '2009-07-11T15:47:53.369+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-3600685079922038858
+blogger_orig_url: http://carlosmayo.blogspot.com/2007/07/utilizando-ajax-y-json-con-struts.html
+---
+
+<p>En este mini-tutorial me gustaría mostrar, siguiendo un ejemplo, como he utilizado Ajax en una aplicación desarrollada con Struts. Antes de comenzar he de decir que he utilizado la librería JavaScript <a href="http://www.prototypejs.org/">Prototype</a> como ayuda.</p>
+
+<p>Imaginemos que tenemos un formulario donde debemos introducir nuestro código postal, población y provincia y queremos que cuando el usuario introduzca el código postal, automáticamente aparezca en sus respectivas cajas de texto la población y provincia a la que pertenece ese código postal. El código del formulario sería algo parecido a lo siguiente:</p>
+
+<pre><span style="color:#ff9900">&lt;input type=<span style="color:#0000ff">&quot;text&quot;</span> id=<span style="color:#0000ff">&quot;codpostal&quot;</span> name=<span style="color:#0000ff">&quot;codpostal&quot;</span>/&gt;</span>
+<span style="color:#ff9900">&lt;input type=<span style="color:#0000ff">&quot;text&quot;</span> id=<span style="color:#0000ff">&quot;poblacion&quot;</span> name=<span style="color:#0000ff">&quot;poblacion&quot;</span>/&gt;</span>
+<span style="color:#ff9900">&lt;input type=<span style="color:#0000ff">&quot;text&quot;</span> id=<span style="color:#0000ff">&quot;provincia&quot;</span> name=<span style="color:#0000ff">&quot;provincia&quot;</span>/&gt;</span></pre>
+
+<p>Para realizar nuestro objetivo, crearemos una funcion JavaScript que utilice Prototype para realizar una petición Ajax  a una acción de Struts para hacer la búsqueda en la base de datos y que devuelva el resultado en un objeto JSON mediante el cual rellenaremos el campo población y provincia. El código de esta función sería el siguiente: </p>
+
+<pre>function buscaPoblacion()
+{
+   $(<span style="color:#0000ff">'poblacion'</span>).value = <span style="color:#0000ff">&quot;Buscando...&quot;</span>;
+   $(<span style="color:#0000ff">'provincia'</span>).value = <span style="color:#0000ff">&quot;Buscando...&quot;</span>;
+
+   new Ajax.Request(<span style="color:#0000ff">'<span style="color:#000099">&lt;html:rewrite page=<span style="color:#0000ff">&quot;/util/buscapoblacion.do&quot;</span>/&gt;</span>'</span>, {
+      parameters: {codpostal: $(<span style="color:#0000ff">'codpostal'</span>).value},
+      onComplete: function(transport, json) {
+         $(<span style="color:#0000ff">'poblacion'</span>).value = json.poblacion;
+         $(<span style="color:#0000ff">'provincia'</span>).value = json.provincia;
+      }
+   });
+} </pre>
+
+<p>La acción de Struts que emplearemos para hacer la búsqueda en la base de datos utiliza la librería <a href="http://json-lib.sourceforge.net/">json-lib</a> para crear objetos JSON. El código del método <i>execute</i> sería algo parecido a lo siguiente:</p>
+
+<pre>
+...
+<span style="color: #003399;">String</span> codpostal<span style="color: #339933;">=</span>request.<span style="color: #006633;">getParameter</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;codpostal);
+&nbsp;
+// Realizar la bÃºqueda en la base de datos y almacenar el resultado
+// en las variables provincia y poblaciÃ³n
+&nbsp;
+HasMap hm = new HasMap();
+hm.put(&quot;</span>poblacion<span style="color: #0000ff;">&quot;,poblacion);
+hm.put(&quot;</span>provincia<span style="color: #0000ff;">&quot;,provincia);
+&nbsp;
+JSONObject json = JSONObject.fromObject(hm);
+response.setHeader(&quot;</span>X<span style="color: #339933;">-</span>JSON<span style="color: #0000ff;">&quot;, json.toString());
+&nbsp;
+return mapping.findForward(&quot;</span>completado<span style="color: #0000ff;">&quot;);
+...</span>
+</pre>
+
+<p>Al usar Struts necesitamos redirigir una acción a una página JSP. En nuestro caso no vamos a mostrar el resultado en una página JSP sino que la información JSON irá incluida en la cabecera de una página JSP en blanco. El <i>struts-config.xml</i> quedaría de la siguiente forma:</p>
+
+<pre><span style="color: #339933;">&lt;</span>action path<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;/util/buscapoblacion&quot;</span> scope<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;request&quot;</span>
+type<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;com.util.BuscaPoblacionAction&quot;</span> validate<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;false&quot;</span><span style="color: #339933;">&gt;</span>
+<span style="color: #339933;">&lt;</span>forward name<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;completado&quot;</span> path<span style="color: #339933;">=</span><span style="color: #0000ff;">&quot;/blanco.jsp&quot;</span><span style="color: #339933;">/&gt;</span>
+<span style="color: #339933;">&lt;/</span>action<span style="color: #339933;">&gt;</span></pre>
+
+<p>Mas información: <br/>
+ - <a href="http://www.weheartcode.com/2007/05/16/using-protototype-ajax-json-with-j2ee-and-struts/">We Heart Code</a><br/>
+ - <a href="http://java-x.blogspot.com/2007/04/using-json-from-java.html">Abhi On Java</a></p>

@@ -1,0 +1,21 @@
+---
+layout: post
+title: Cómo tener una nueva unidad de 1Gb en nuestro escritorio
+date: '2006-06-28T22:08:00.000+02:00'
+author: Carlos Mayo
+tags:
+- Linux
+- Windows
+- MacOS
+modified_time: '2006-11-11T16:05:56.780+01:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-115152558764209850
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/06/cmo-tener-una-nueva-unidad-de-1gb-en.html
+---
+
+<p><a href="http://www.box.net">Box.net</a> es un servicio que nos permite tener alojados nuestros archivos en la red disponiendo gratuitamente de un espacio de 1 gb. Para poder subir y bajar estos archivos podemos hacerlo a través de su web o, en nuestro caso, hacer uso del protocolo <a href="http://es.wikipedia.org/wiki/WebDAV">WebDAV</a> y tener ese espacio de almacenamiento como una unidad más de nuestro ordenador. Para ello, y dependiendo del sistema operativo, haremos lo siguiente:</p>
+
+<p><b>Windows</b>. Abrimos <i>Mis sitios de red</i> y hacemos doble clic sobre <i>Agregar sitios de red</i>. Nos aparecerá un asistente para agregar sitios de red y pulsaremos <i>Siguiente</i>, en la siguiente pantalla elegiremos <i>Elija otra ubicación de red</i> y pulsaremos <i>Siguiente</i> y ahora nos preguntará por la <i>Dirección de red o Internet</i>, en cuya caja de texto escribiremos <i>https://www.box.net/dav</i> y pulsaremos <i>Siguiente</i>. Nos pedirá nuestro usuario y contraseña de Box.net y por último, un nombre para este nuevo sitio de red. Una vez terminado, tendremos un nuevo sitio de red a través del cual accederemos mediante el Explorer a nuestro espacio de almacenamiento en Box.net y podremos trabajar en el como si una unidad más se tratase.</p>
+
+<p><b>Linux</b>. Mediante <a href="http://www.kde.org">KDE</a> es tan sencillo como teclear en la barra de Konkeror la dirección <i>webdavs://box.net/dav</i> o desde <a href="http://www.ubuntu.com/">Ubuntu</a>, nos iremos a <i>Archivo->Conectar al sevidor</i> y una vez allí, seleccionamos el tipo de servicio <i>Webdav Https</i> y el servidor <i>box.net/dav</i>.</p>
+
+<p><b>MacOS X</b>. En el Finder, seleccionamos el menú <i>Ir</i>, elegimos <i>Conectarse al servidor... (Comando+K)</i> e introduciremos la dirección <i>https://www.box.net/dav</i>. Nos preguntará por nuestro usuario y contraseña y ya tendremos un nuevo volumen montado en el escritorio. Si deseamos que se monte en cada nuevo arranque, nos iremos a <i>Preferencias del Sistema->Cuentas->Items de arranque</i> y arrastraremos ahí dentro nuestro nuevo volumen.</p>

@@ -1,0 +1,34 @@
+---
+layout: post
+title: Túnel para HTTP sobre SSH
+date: '2006-02-10T19:16:00.000+01:00'
+author: Carlos Mayo
+tags:
+- Seguridad
+modified_time: '2007-05-06T13:52:55.056+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-113959602915816665
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/02/tnel-para-http-sobre-ssh.html
+---
+
+<p>Una forma de incrementar la seguridad y la privacidad a la hora de navegar por la web, es haci&eacute;ndolo mediante un t&uacute;nel sobre SSH. Mi punto de acceso consiste en un router WRT54GL con firware de <a href="http://fon.es">Fon</a> por lo que tengo la red abierta y sin ning&uacute;n tipo de encriptaci&oacute;n y adem&aacute;s posee un servidor SSH.</p>
+
+<p>Bajo Windows, para conectar con el servidor SSH del router y realizar el t&uacute;nel, utilic&eacute; el cliente SSH <a href="http://www.putty.nl/">Putty</a>. Una vez instalado configuro en &eacute;l la IP y el puerto del router.</p>
+
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/putty1.png"/></center>
+
+<p>Seguidamente, dentro de <i>Connection->SSH->Tunnels</i> introducimos en <i>Source port</i> el puerto local que deseemos utilizar, marcamos la casilla <i>Dynamic</i> y pulsamos en <i>Add</i>. De esta forma crearemos un proxy SOCKS en nuestra m&aacute;quina en el puerto que hayamos introducido.</p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/putty2.png"/></center>
+
+<p>Una vez realizada y logueada nuestra conexi&oacute;n en el servidor SSH, debemos indicarle a nuestro navegador, en este caso Firefox, que conecte a trav&eacute;s de nuestro proxy SOCKS. Para ello, en <i>Preferencias</i> y dentro de la pesta&ntilde; <i>General</i> pulsamos el bot&oacute;n <i>Configuraci&oacute;n de conexi&oacute;n...</i>. All&iacute; seleccionamos <i>Configuraci&oacute;n manual del proxy</i> y en <i>Servidor SOCKS</i> introducimos localhost y en <i>Puerto</i>, el puerto que hayamos introducido en Putty.</p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/putty3.png"/></center>
+
+<p>Para Linux, utilizaremos el cliente ssh incluido en <a href="http://www.openssh.com/">OpenSSH</a> y simplemente con el comando:</p>
+
+<blockquote>localhost$ ssh -D 3000 <i>usuario</i>@<i>ip_servidor_ssh</i></blockquote>
+
+<p>tendremos creado nuestro proxy SOCKS en el puerto 3000 y s&oacute;lo nos quedar&iacute;a configurar el navegador para que conecte a trav&eacute;s de &eacute;l.</p>
+
+<p>Hay que decir de esta forma todo nuestro tr&aacute;fico HTTP estar&aacute; encriptado pero no as&iacute; las peticiones DNS que realice nuestro sistema y que tendremos que estar logueados en el servidor SSH todo el tiempo que deseemos usar el proxy.</p>

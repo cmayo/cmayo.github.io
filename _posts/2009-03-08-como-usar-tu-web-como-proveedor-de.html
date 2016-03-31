@@ -1,0 +1,38 @@
+---
+layout: post
+title: Usar tu web como proveedor de identidad
+date: '2009-03-08T12:03:00.011+01:00'
+author: Carlos Mayo
+tags:
+- openid
+modified_time: '2009-07-11T15:20:40.478+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-5185760156397035943
+blogger_orig_url: http://carlosmayo.blogspot.com/2009/03/como-usar-tu-web-como-proveedor-de.html
+---
+
+<img align="right" class="imagen" src="/imagenes/openid.png" />
+<p><strong>¿Qué es openid?</strong></p>
+<p><a href="http://www.openid.net">OpenID</a> es un sistema de identificación descentralizado con el que el usuario puede identificarse en cualquier web usando una URL como identidad. Gracias a esto el usuario no tendrá que crearse una nueva cuenta en cada web que quiera registrarse. En su lugar, tendrá que disponer de un identificador creado en un servidor que verifique OpenID, llamado proveedor de identidad.</p>
+<p>Actualmente existen numerosos proveedores en los que crear tu identidad. Incluso es posible, que sin saberlo, ya tengas una, ya que servicios como Blogger (bajo la identidad <strong>usuario.blogspot.com</strong>), Wordpress.com (<strong>usuario.wordpress.com</strong>) o Yahoo! (<strong>openid.yahoo.com</strong>) son proveedores de identidad.</p>
+<p>Sin embargo, si no quieres utilizar un proveedor de terceros y utilizar el tuyo propio, dispones de varias alternativas para ello. Aquí vamos a explicar las tres formas mas sencillas de hacerlo.</p>
+<p><strong>1. Delegación de autenticación</strong></p>
+<p><a href="http://openid.net/specs/openid-authentication-1_1.html#delegating_authentication">La especificación OpenID 1.1</a> permite que si el servidor del usuario no puede ejecutar un proveedor de identidad o desea utilizar uno que se encuentra en un servidor diferente, este puede delegar su autenticación a otro servidor. Por ejemplo, si queremos que nuestra web http://www.miweb.com sea nuestro identificador pero no disponemos de un proveedor de identidad en ella, podemos delegar la autenticación a otro proveedor, por ejemplo Blogger o Wordpress.com.</p>
+<p>Para ello, hay que añadir los dos siguientes tags (ejemplo para delegar en Blogger) en la sección HEAD de nuestra web:</p>
+<div class="code">
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"openid.server"</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"http://www.blogger.com/openid-server.g"</span><span style='color:#a65700; '>/></span><br/>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"openid.delegate"</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"http://miblog.blogger.com"</span><span style='color:#a65700; '>/></span>
+</div>
+<p>Si quiere delegar en cualquier otro proveedor, tan solo debes cambiar el nombre del servidor en openid.server y la URL de tu identidad en openid.delegate.</p>
+
+<p><strong>2. Ejecutar tu propio servidor de OpenID</strong></p>
+<p>Existen varias <a href="http://wiki.openid.net/Run_your_own_identity_server">herramientas para instalar tu servidor de OpenID</a> pero nosotros utilizaremos <a href="http://siege.org/projects/phpMyID/">phpMyID</a> al ser bastante simple y fácil de configurar (sólo dos archivos). Lo único que tienes que hacer es descargarlo y subir los dos ficheros a tu servidor, configurar tu usuario y contraseña en el MyID.config.php y colocar las dos etiquetas de delegación en tu web del siguiente modo:</p>
+<div class="code">
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"openid.server"</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"http://tuweb/MyID.config.php"</span><span style='color:#a65700; '>/></span><br/>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"openid.delegate"</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"http://tuweb/MyID.config.php"</span><span style='color:#a65700; '>/></span>
+</div>
+<p>De esta forma dispones de tu propio servidor OpenID y no dependes de soluciones de terceros.</p>
+
+<p><strong>3. Instalar el plugin OpenID para Wordpress</strong></p>
+<p>Si estás utilizando Wordpress.org para tu web, puede instalar el <a href="http://wordpress.org/extend/plugins/openid/">plugin OpenID</a>. Este plugin permite a los visitantes de tu web autenticarse en ella mediante OpenID pero a partir de la versión 3.0 también ofrece la posibilidad de actuar como proveedor de identidad. Para ello sólo tienes que instalar este plugin y activar la opción de proveedor de identidad en su configuración. Así de sencillo.</p>
+
+<p>Todas estas soluciones son monousuario, es decir, que sólo sirven para identificar a un único usuario. Para soportar múltiples identidades, habrá que instalar algún otro servidor como <a href="http://wiki.guruj.net/Clamshell!Home">Clamshell</a> o <a href="http://simpleid.sourceforge.net/">SimpleID</a> entre otros.</p>

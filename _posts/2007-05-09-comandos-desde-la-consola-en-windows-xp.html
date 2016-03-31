@@ -1,0 +1,144 @@
+---
+layout: post
+title: Comandos desde la consola en Windows XP
+date: '2007-05-09T21:39:00.000+02:00'
+author: Carlos Mayo
+tags:
+- Windows
+modified_time: '2007-05-09T22:17:31.321+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-5899548724288243292
+blogger_orig_url: http://carlosmayo.blogspot.com/2007/05/comandos-desde-la-consola-en-windows-xp.html
+---
+
+<p>Reproduzco aqu&iacute; infomaci&oacute;n <a href="http://www.google.es/search?q=%22Comandos+desde+la+consola+en+Windows+XP%22">encontrada</a> acerca de los comandos de la consola de Windows XP.</p>
+
+<p>Adem&aacute;s de las numerosas opciones de configuraci&oacute;n que incluye Windows XP en el Panel de Control, existen otras opciones adicionales que s&oacute;lo son accesibles a trav&eacute;s de ciertos comandos.</p>
+
+<p>El sistema operativo Microsoft Windows XP incluye muchas funciones a las que tan s&oacute;lo podemos acceder a trav&eacute;s de la consola de comandos. A menudo estas herramientas nos pueden ayudar a mejorar el rendimiento de nuestro sistema operativo, diagnosticar y corregir problemas o simplemente obtener m&aacute;s informaci&oacute;n sobre la configuraci&oacute;n de nuestro equipo.</p>
+
+<p>Para acceder a la consola de comandos, tan s&oacute;lo tendremos que ir al men&uacute; Inicio, seleccionar la opci&oacute;n ejecutar y escribir cmd.exe &oacute; simplemente cmd. Tambi&eacute;n podremos acceder a este men&uacute; mediante la combinaci&oacute;n del teclado tecla Windows+R.</p>
+
+<p>Para obtener ayuda adicional sobre un comando, las opciones que incluye y algunos ejemplos de uso, tan s&oacute;lo tendremos que a&ntilde;adirle la opci&oacute;n /h &oacute; /?.</p>
+
+<h3>Archivos y sistemas de ficheros</h3>
+
+<p><b>cacls:</b> Permite modificar los permisos en ficheros y carpetas, permitiendo o prohibiendo a cada usuario leer, escribir o modificar el contenido de dichos archivos o carpetas.<br/>
+<b>chkdsk:</b> Comprueba el estado de una partici&oacute;n y repara los da&ntilde;os en caso de que encuentre alguno. Si lo ponemos sin ning&uacute;n par&aacute;metro simplemente escanear&aacute; la partici&oacute;n, si queremos que adem&aacute;s corrija los errores, deberemos a&ntilde;adir la opci&oacute;n /F, es decir, chkdsk /F.<br/>
+<b>cipher:</b> Permite cifrar archivos, directorios o particiones siempre que se encuentren en el sistema de archivos NTFS.<br/>
+<b>comp:</b> Compara archivos o carpetas y muestra las diferencias existentes entre ellos.<br/>
+<b>compact:</b> Permite comprimir archivos o carpetas para ahorrar espacio en el disco duro. Para comprimir los archivos deberemos utilizar el modificador /c y para descomprimirlo en modificador /u. Por ejemplo, para comprimir la carpeta c:\pruebas debemos utilizar el comando compact /c c:\pruebas y para descomprimirla compact /u c:\pruebas.<br/>
+<b>convert:</b> Convierte particiones FAT &oacute; FAT32 a NTFS. Antes de utilizar este comando es recomendable realizar una copia de seguridad puesto que es posible que durante la conversi&oacute;n se pierdan datos.<br/>
+<b>defrag:</b> Desfragmenta los archivos de una unidad, similar a la utilidad Defragmentador de discos de Windows pero en modo consola.<br/>
+<b>diskpart:</b> Permite crear, eliminar y administrar particiones. Este programa en modo consola debemos utilizarlo con cuidado puesto que es f&aacute;cil que eliminemos sin darnos cuenta todo el contenido del disco duro o de la partici&oacute;n activa.<br/>
+<b>find y findstr:</b> Estos comandos buscan cadenas de textos en el interior de uno o varios archivos. Sin embargo, el comando findstr ofrece m&aacute;s opciones de b&uacute;squeda que el comando find.<br/>
+<b>iexpress:</b> Este comando lanzar&aacute; un asistente para crear archivos comprimidos .CAB autodescomprimibles.<br/>
+<b>openfiles:</b> Muestra a un administrador los archivos abiertos en un sistema a un administrador y permite desconectarlos si se han abierto a trav&eacute;s de red.<br/></p>
+
+<h3>Configuraci&oacute;n del sistema</h3>
+
+<p><b>bootcfg:</b> Permite ver y modificar las entradas del archivo boot.ini. Estas entradas nos permiten seleccionar con que sistema operativo deseamos iniciar el equipo.<br/>
+<b>control userpasswords2:</b> Permite modificar las claves y los permisos de los diferentes usuarios, as&iacute; como requerir la pulsaci&oacute;n de control+alt+suprimir para poder iniciar sesi&oacute;n, haciendo el inicio de sesi&oacute;n m&aacute;s seguro.<br/></p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp4.jpg"/></center>
+
+<p><b>driverquery:</b> Hace un listado de todos los drivers instalados en el sistema y muestra informaci&oacute;n sobre cada uno de ellos.<br/>
+<b>dxdiag:</b> Lanza la herramienta de diagn&oacute;stico de Direct X, con la cual podremos comprobar la versi&oacute;n Direct X que tenemos instalada y permite comprobar mediante tests que todo lo referente a estos controladores funcione correctamente.<br/></p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp7.jpg"/></center><br/>
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp3.jpg"/></center><br/>
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp5.jpg"/></center>
+
+<p><b>gpresult:</b> Muestra informaci&oacute;n sobre las pol&iacute;ticas de grupo aplicadas a un usuario.<br/>
+<b>gpupdate:</b> Vuelve a aplicar las pol&iacute;ticas de grupo.<br/>
+<b>msconfig:</b> Desde esta aplicaci&oacute;n en modo gr&aacute;fico podremos seleccionar que programas y servicios se cargan durante el inicio de Windows as&iacute; como los sistemas operativos que el usuario puede seleccionar para iniciar el ordenador.</p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp6.jpg"/></center>
+
+<p><b>pagefileconfig:</b> Permite configurar el archivo de paginaci&oacute;n de Windows.<br/>
+<b>prncnfg:</b> Muestra informaci&oacute;n sobre las impresoras instaladas.<br/>
+<b>prnjobs:</b> Muestra informaci&oacute;n sobre los trabajos de impresi&oacute;n en cola.<br/>
+<b>reg:</b> Permite ver y modificar valores del registro de Windows. Las opciones posibles son:</p>
+
+<p>reg query => realiza una consulta en el registro<br/>
+reg add => a&ntilde;ade una entrada al registro<br/>
+reg delete => elimina una clave del registro<br/>
+reg copy => copia una clave del registro a otra parte del registro o a otro equipo<br/>
+reg save => guarda una parte del registro en un archivo<br/>
+reg restore => restaura una parte del registro de un archivo<br/>
+reg load => carga una clave o &aacute;rbol al registro desde un archivo<br/>
+reg unload => descarga una clave o &aacute;rbol del registro<br/>
+reg compare => compara varios valores del registro<br/>
+reg export => exporta el registro o parte del registro a un archivo<br/>
+reg import => importa el registro o parte del registro de un archivo</p>
+
+<p><b>regedit:</b> Editor del registro en modo gr&aacute;fico.</p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp2.jpg"/></center>
+
+<p><b>sc:</b> Este commando nos permite administrar los servicios, ya sea iniciar uno, detenerlo, mandarle se&ntilde;ales, etc.<br/>
+<b>sfc:</b> Este comando permite buscar archivos del sistema da&ntilde;ados y recuperarlos en caso de que est&eacute;n defectuosos (es necesario el CD de instalaci&oacute;n del sistema operativo para utilizarlo). Para realizar una comprobaci&oacute;n inmediata, deberemos ejecutar la orden sfc /scannow.<br/>
+<b>systeminfo:</b> Muestra informaci&oacute;n sobre nuestro equipo y nuestro sistema operativo: n&uacute;mero de procesadores, tipo de sistema, actualizaciones instaladas, etc.<br/>
+<b>taskkill:</b> Permite eliminar un proceso conociendo su nombre o el n&uacute;mero del proceso (PID).<br/>
+<b>tasklist:</b> Realiza un listado de todos los procesos que hay. &uacute;til si deseamos eliminar un proceso y no conocemos exactamente su nombre o su PID.</p>
+
+<h3>Redes</h3>
+
+<p><b>arp:</b> Muestra y permite modificar las tablas del protocolo ARP, encargado de convertir las direcciones IP de cada ordenador en direcciones MAC (direcci&oacute;n f&iacute;sica &uacute;nica de cada tarjeta de red).<br/>
+<b>ftp:</b> Permite conectarse a otra m&aacute;quina a trav&eacute;s del protocolo FTP para transferir archivos.<br/>
+<b>getmac:</b> Muestra las direcciones MAC de los adaptadores de red que tengamos instalados en el sistema.<br/>
+<b>ipconfig:</b> Muestra y permite renovar la configuraci&oacute;n de todos los interfaces de red.<br/>
+<b>nbtstat:</b> Muestra las estad&iacute;sticas y las conexiones actuales del protocolo NetBIOS sobre TCP/IP, los recursos compartidos y los recursos que son accesibles.<br/>
+<b>net:</b> Permite administrar usuarios, carpetas compartidas, servicios, etc. Para un listado completo de todas las opciones, escribir net sin ning&uacute;n argumento. Para obtener ayuda sobre alguna opci&oacute;n en concreto, escribier net help opci&oacute;n.<br/>
+<b>netsh:</b> Este programa en modo consola permite ver, modificar y diagnosticar la configuraci&oacute;n de la red.<br/>
+<b>netstat:</b> Mediante este comando obtendremos un listado de todas las conexiones de red que nuestra m&aacute;quina ha realizado.<br/>
+<b>nslookup:</b> Esta aplicaci&oacute;n se conecta a nuestros servidores DNS para resolver la IP de cualquier nombre de host. Por ejemplo, si ejecutamos nslookup y escribimos www.xdireccion.com, nos responder&aacute; con algo como:<br/>
+
+Respuesta no autoritativa:<br/>
+Nombre: www.xdireccion.com<br/>
+Address: 217.76.130.250<br/>
+
+Esto quiere decir que la direcci&oacute;n web www.xdireccion.com corresponde con la IP 217.76.130.250.<br/>
+
+<b>pathping:</b> Muestra la ruta que sigue cada paquete para llegar a una IP determinada, el tiempo de respuesta de cada uno de los nodos por los que pasa y las estad&iacute;sticas de cada uno de ellos.<br/>
+<b>ping:</b> Poniendo detr&aacute;s del comando ping el nombre o la direcci&oacute;n IP de la m&aacute;quina, por ejemplo ping 192.168.0.1 enviaremos un paquete a la direcci&oacute;n que pongamos para comprobar que est&aacute; encendida y en red. Adem&aacute;s, informa del tiempo que tarda en contestar la m&aacute;quina destino, lo que nos puede dar una idea de lo congestionada que est&eacute; la red.<br/>
+<b>rasdial:</b> Permite establecer o finalizar una conexi&oacute;n telef&oacute;nica.<br/>
+<b>route:</b> Permite ver o modificar las tablas de enrutamiento de red.<br/>
+<b>tracert:</b> Muestra el camino seguido para llegar a una IP y el tiempo de respuesta de cada nodo. </p>
+
+<h3>Varios</h3>
+
+<p><b>at:</b> Permite programar tareas para que nuestro ordenador las ejecute en una fecha o en un momento determinado.<br/>
+<b>logoff:</b> Este comando nos permite cerrar una sesi&oacute;n iniciada, ya sea en nuestro ordenador o en otro ordenador remoto.<br/>
+<b>msg:</b> Env&iacute;a un mensaje a unos o varios usuarios determinados mediante su nombre de inicio de sesi&oacute;n o el identificador de su sesi&oacute;n.<br/>
+<b>msiexec:</b> Permite instalar, desinstalar o reparar un programa instalado mediante un paquete MSI (archivos con extensi&oacute;n .msi).<br/>
+<b>runas:</b> Permite ejecutar un programa con privilegios de otra cuenta. &uacute;til por ejemplo si estamos como usuario limitado y queremos hacer algo que necesite privilegios de administrador.<br/>
+<b>shctasks:</b> Permite administrar las tareas programadas.<br/>
+<b>shutdown:</b> Permite apagar, reiniciar un ordenador o cancelar un apagado. Es especialmente &uacute;til si hemos sido infectado con el virus Blaster o una de sus variantes para cancelar la cuenta atr&aacute;s. Para ello, tan s&oacute;lo tendremos que utilizar la sintaxis shutdown -a.</p>
+
+
+<h3>Microsoft Management Console (MMC)</h3>
+
+<p>Estos comandos nos dar&aacute;n acceso a distintas partes de la Microsoft Management Console, un conjunto de peque&ntilde;as aplicaciones que nos permitir&aacute;n controlar varios apartados de la configuraci&oacute;n de nuestro sistema operativo.</p>
+
+<center><img class="imagen" src="http://www.carlosmayo.net/blog/imagenes/comandosxp1.jpg"/></center>
+
+<p>Para acceder a estas opciones, no es necesario entrar en la consola del sistema (cmd.exe), sino que basta con introducirlos directamente desde inicio - ejecutar.</p>
+
+<p><b>ciadv.msc:</b> Permite configurar el servicio de indexado, que acelera las b&uacute;squedas en el disco duro.<br/>
+<b>compmgmt.msc:</b> Da acceso a la Administraci&oacute;n de equipos, desde donde podemos configurar nuestro ordenador y acceder a otras partes de la MMC.<br/>
+<b>devmgmt.msc:</b> Accede al Administrador de dispositivos.<br/>
+<b>dfrg.msc:</b> Desfragmentador del disco duro.<br/>
+<b>diskmgmt.msc:</b> Administrador de discos duros.<br/>
+<b>fsmgmt.msc:</b> Permite administrar y monitorizar los recursos compartidos.<br/>
+<b>gpedit.msc:</b> Permite modificar las pol&iacute;ticas de grupo.<br/>
+<b>lusrmgr.msc:</b> Permite ver y modificar los usuarios y grupos locales.<br/>
+<b>ntmsmgr.msc:</b> Administra y monitoriza los dispositivos de almacenamientos extra&iacute;bles.<br/>
+<b>ntmsoprq.msc:</b> Monitoriza las solicitudes del operador de medios extra&iacute;bles.<br/>
+<b>perfmon.msc:</b> Monitor de rendimiento del sistema.<br/>
+<b>secpol.msc:</b> Configuraci&oacute;n de la pol&iacute;tica de seguridad local.<br/>
+<b>services.msc:</b> Administrador de servicios locales.<br/>
+<b>wmimgmt.msc:</b> Configura y controla el servicio Instrumental de administraci&oacute;n (WMI) de Windows.</p>
+
+<p>Como podemos comprobar, muchas de las opciones aqu&iacute; listadas s&oacute;lo son accesibles a trav&eacute;s de esta consola, por lo que tareas como personalizar nuestro sistema de acuerdo a nuestros gustos, adaptarlo a nuestras necesidades con una mayor precisi&oacute;n o simplemente por conocer c&oacute;mo funciona nuestro sistema operativo o c&oacute;mo est&aacute; configurado podemos realizarlas con ayuda de estos men&uacute;s ocultos.</p>
+
+<p>Tambi&eacute;n es posible descargarlo en formato pdf <a href="http://www.carlosmayo.net/docs/Comandos_consola_WinXP.pdf">aqu&iacute;</a></p>

@@ -1,0 +1,22 @@
+---
+layout: post
+title: Reciclaje de equipos con ThinStation
+date: '2005-09-06T00:19:00.000+02:00'
+author: Carlos Mayo
+tags:
+- Linux
+modified_time: '2007-05-06T13:53:52.869+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-112595933961247099
+blogger_orig_url: http://carlosmayo.blogspot.com/2005/09/reciclaje-de-equipos-con-thinstation.html
+---
+
+<img class="imagen" src="http://www.carlosmayo.net/blog/iconos/002.jpg" align="right"><p>Hoy se me planteaba la necesidad de instalar un aula con Windows 2000/XP pero a la hora de acercarme a las instalaciones pude comprobar como en aquellos equipos era imposible instalar lo que me ped&iacute;an. Eran ordenadores con Pentium 100 &oacute; 200 y similares.</p>
+
+<p>Para Linux conoc&iacute;a el <a href="http://www.ltsp.com">Linux Terminal Server Project</a> mediante el cual ya hab&iacute;a instalado otro aula pero no sab&iacute;a de nada parecido para Windows. Buscando en las news me encontr&eacute; con algo llamado <a href="http://thinstation.sourceforge.net">ThinStation</a> y leyendo su documentaci&oacute;n comprob&eacute; que aquello era lo que estaba buscando.</p>
+
+<p>Se trata de una ligera distribuci&oacute;n que convierte un PC obsoleto en un completo cliente que soporta todo tipo de protocolos de conectividad: Citrix ICA, NoMachine NX, MS Windows terminal
+services (RDP), Tarantella, X, telnet, tn5250, VMS term y SSH. Se puede arrancar desde la red utilizando Etherboot/PXE o desde un diskette/CD/HD/disco flash local. Toda la configuraci&oacute;n de los PC clientes est&aacute;n centralizadas en el servidor lo cual simplifica el mantenimiento.</p>
+
+<p>La instalaci&oacute;n fue realmente sencilla siguiendo el siguiente <a href="http://thinstation.sourceforge.net/docs/HowTo-NetBoot.txt">Howto</a>. B&aacute;sicamente consiste en utilizar un diskette de arranque de Linux (el cual dispone de m&aacute;s de 30 drivers de tarjetas de red), seguidamente buscar&aacute; un servidor DHCP disponible, obtendr&aacute; su propia direcci&oacute;n IP y se descargar&aacute; mediante TFTP la imagen de arranque correspondiente desde el servidor. Descargar&aacute; tambi&eacute;n su archivo de configuraci&oacute;n y lanzar&aacute; el terminal en el servidor indicado en dicho archivo.</p>
+
+<p>Por ahora tengo el aula perfectamente funcionando con ThinStation y Windows 2000 Server.</p>

@@ -1,0 +1,23 @@
+---
+layout: post
+title: Sincronizando ficheros con Unison
+date: '2007-06-23T22:01:00.001+02:00'
+author: Carlos Mayo
+tags:
+- Linux
+modified_time: '2009-07-11T15:48:45.452+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-1522414443833376235
+blogger_orig_url: http://carlosmayo.blogspot.com/2007/06/sincronizando-ficheros-con-unison.html
+---
+
+<p>Quer&iacute;a encontrar una soluci&oacute;n para poder sincronizar los datos de mi portatil con los del ordenador de sobremesa. Conoc&iacute;a <a href="http://samba.anu.edu.au/rsync/">rsync</a>, que es una utilidad para sincronizar de forma eficiente ficheros y directorios entre dos ordenadores, pero s&oacute;lo sincroniza de forma unidireccional. As&iacute; que no me serv&iacute;a ya que mi intenci&oacute;n era que independientemente donde modificara alg&uacute;n fichero (portatil o sobremesa), pudiera sincronizar en ambos sentidos y que ambos equipos tuvieran los mismos datos.</p>
+
+<p>La soluci&oacute;n la encontre en <a href="http://www.cis.upenn.edu/~bcpierce/unison/">unison</a>. Unison permite mantener sincronizados diferentes directorios en el mismo ordenador o en ordenadores diferentes (incluso con diferentes sistemas operativos) utilizando ssh u otros m&eacute;todos de compartici&oacute;n. Adem&acute;s permite hacerlo en ambos sentidos as&iacute; que ambos ordenadores tendr&acute;n los mismos datos en los directorios sincronizados.</p>
+
+<p>Una vez instalado el Unison, podemos ejecutar su interfaz gr&aacute;fica o utilizar su interfaz gr&aacute;fica. Si decidimos utilizar su interfaz gr&aacute;fica, una vez ejecutada nos aparecer&aacute; una ventana donde podemos elegir un perfil ya creado o crear uno nuevo. Al crear uno nuevo, se nos pedir&aacute; el primer directorio (local) y seguidamente el segundo, al que podemos acceder por ssh (indicando el nombre o IP del host) o por el arbol de directorios local si la unidad del sistema remoto ya est&aacute; montada. Una vez configurado, Unison comenzar&aacute; a escanear los ficheros y directorios de ambos ordenadores y nos aparecer&aacute; un listado con todos los que se necesita actualizar hacia uno de los ordenadores o hacia otro (nos lo indicar&aacute; mediante una flecha verde). En caso que Unison no sepa en qu&eacute; direcci&oacute;n actualizar nos lo indicar&aacute; mediante un s&iacute;mbolo de interrogaci&oacute;n rojo. La direcci&oacute;n en la que se debe actualizar los ficheros se puede  en la lista. Por &uacute;ltimo, pulsamos sobre el bot&oacute;n <i>Go</i> y comenzar&aacute; la sincronizaci&oacute;n.</p>
+
+<p>Por otra parte, si decidimos utilizar la l&iacute;nea de comandos, la sintaxis es la siguiente:</p>
+
+<pre>unison /directorio/local ssh://host//directorio/remoto</pre>
+
+<p>Por &uacute;ltimo comentar un problema que me ocurri&oacute;. Si lo que queremos es sincronizar contra una memoria USB formateada con FAT32, obtendremos un error al intentar Unison establecer los permisos de los ficheros. Para solucionar esto, podemos montar la memoria USB añadiendo la opcion <i>quiet</i> por lo que se ignorar&aacute; los intentos de establecimiento de permisos en esa unidad y no nos dar&aacute; error.</p>

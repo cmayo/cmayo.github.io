@@ -1,0 +1,30 @@
+---
+layout: post
+title: Evitar entradas duplicadas de urls con o sin www
+date: '2008-01-25T23:24:00.002+01:00'
+author: Carlos Mayo
+tags:
+- Programación
+- web
+modified_time: '2009-07-11T15:43:35.206+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-1534119214124610683
+blogger_orig_url: http://carlosmayo.blogspot.com/2008/01/evitar-entradas-duplicadas-de-urls-con.html
+---
+
+<p>Normalmente a una web se puede acceder introduciendo la url con o sin las www pero si esto no se encuentra correctamente configurado, los buscadores pueden penalizar a una web por tener contenido duplicado. Para evitar esto, podemos hacer una <a href="http://google.dirson.com/posicionamiento.net/redireccion-301/">redirección 301</a> de todas las peticiones hacia www.midominio.com o midominio.com. Para hacer esto, podemos hacer uso del fichero de configuración <a href="http://en.wikipedia.org/wiki/Htaccess">.htaccess</a> de nuestro servidor Apache.</p>
+
+<p>Por ejemplo, si queremos que al escribir midominio.com nos redirija a www.midominio.com tendremos que crear en el directorio raiz del servidor, un fichero llamado .htaccess con el siguiente código:</p>
+
+<pre>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^www.midominio.com$ [NC]
+RewriteRule ^(.*)$ http://www.midominio.com/$1 [L,R=301]</pre>
+
+<p>Si por el contrario queremos redirigir desde www.midominio.com a midominio.com, el contenido del .htaccess será el siguiente:</p>
+
+<pre>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^midominio.com$ [NC]
+RewriteRule ^(.*)$ http://midominio.com/$1 [L,R=301]</pre>

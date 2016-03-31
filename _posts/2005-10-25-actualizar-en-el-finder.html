@@ -1,0 +1,21 @@
+---
+layout: post
+title: Actualizar en el Finder
+date: '2005-10-25T13:48:00.000+02:00'
+author: Carlos Mayo
+tags:
+- MacOS
+modified_time: '2007-05-06T13:55:17.617+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-113024184481152026
+blogger_orig_url: http://carlosmayo.blogspot.com/2005/10/actualizar-en-el-finder.html
+---
+
+<p>Como coment&eacute; en un <a href="http://blog.carlosmayo.net/2005/10/incompatibilidades-windows-macos.html">post</a> anterior, la navegaci&oacute;n por los vol&uacute;menes de red es demasiado lenta incluso a la hora de actualizar en el Finder los elementos que existen en un directorio. Para solucionar esto, ya que el Finder no tiene la opci&oacute;n de actualizar (como el F5 en Windows), cre&eacute; un script para realizar este objetivo.</p>
+
+<blockquote>try<br>&nbsp;&nbsp;&nbsp;tell application "Finder" to update items of front window<br>end try</blockquote>
+
+<p>Lo siguiente que hice fue guardar este script como aplicaci&oacute;n, asignarle un icono adecuado y colocarlo en la barra de herramientas del finder. El resultado es el siguiente:</p>
+
+<center><img src="http://www.carlosmayo.net/blog/imagenes/actualizar.jpg"></center>
+
+<p>La aplicaci&oacute;n y el c&oacute;digo fuente os lo pod&eacute;is descargar <a href="http://www.carlosmayo.net/ficheros/actualizar.sit">aqu&iacute;</a>.</p>

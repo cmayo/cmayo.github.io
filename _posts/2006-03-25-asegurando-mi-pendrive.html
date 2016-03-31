@@ -1,0 +1,25 @@
+---
+layout: post
+title: Asegurando mi pendrive
+date: '2006-03-25T21:51:00.001+01:00'
+author: Carlos Mayo
+tags:
+- Seguridad
+modified_time: '2009-07-11T15:55:53.319+02:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-114331999271650197
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/03/asegurando-mi-pendrive.html
+---
+
+<img class="imagen" src="/imagenes/001.jpg" align="right" /> <p>Llevaba un tiempo preocupado por la seguridad de los datos que llevo en mi pendrive. No es que guarde cosas importantes o confidenciales, sino que me preocupa el caso de que pierda u olvide en alg&uacute;n sitio mi pendrive y cualquier persona pueda leer el contenido de &eacute;l. Por eso me puse a buscar por internet alguna herramienta para cifrar todo el contenido y encontr&eacute; <a href="http://www.truecrypt.org">TrueCrypt</a>.</p>
+
+<p>Sus principales caracter&iacute;sticas son que permite crear una unidad virtual encriptada y montarla como una unidad de disco o incluso encriptar toda una partici&oacute;n de disco o dispositivo como puede ser una memoria USB. Adem&aacute;s la encriptación es autom&aacute;tica, en tiempo real y transaparente al usuario. Y lo mejor de todo es que es libre y posee versi&oacute;n para Windows y para Linux (espero que saquen versi&oacute;n para MacOS X).</p>
+
+<p>La herramienta posee una interfaz (s&oacute;lo en la versi&oacute;n Windows) muy sencilla e incluso se puede utilizar desde la l&iacute;nea de comandos, con lo cual, me he creado un par de scripts para montar y desmontar la partici&oacute;n encriptada de mi pendrive con un simple click.</p>
+
+<pre>Montar:<br>
+<i>Para Windows:</i> truecrypt \Device\Harddisk1\Partition1 /q /e /a<br>
+<i>Para Linux:</i> truecrypt /dev/sda1 /mnt/pendrive<br><br>
+Desmontar:<br>
+<i>Para ambos:</i> truecrypt /d</pre>
+
+<p>Para terminar, si lo que s&oacute;lo se desea es encriptar un archivo, una buena herramiento para ello es <a href="http://www.lassekolb.info/bfacs.htm">Blowfish Advanced CS</a>.</p>

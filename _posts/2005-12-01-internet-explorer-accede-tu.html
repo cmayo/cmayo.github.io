@@ -1,0 +1,19 @@
+---
+layout: post
+title: Internet Explorer accede a tu portapapeles
+date: '2005-12-01T22:53:00.000+01:00'
+author: Carlos Mayo
+tags:
+- Windows
+modified_time: '2006-11-11T16:05:55.090+01:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-113259932849379595
+blogger_orig_url: http://carlosmayo.blogspot.com/2005/12/internet-explorer-accede-tu.html
+---
+
+<p>Si utilizas Internet Explorer para navegar, tenga en cuenta que este es capaz de acceder a tu portapapeles. Esto es gracias al <a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/objects/clipboarddata.asp">objeto clipboardData</a> cuyo objetivo es proveer acceso al portapapeles para operaciones de edici&oacute;n, es decir, copiar y pegar.</p>
+
+<p>El peligro de esto radica en que mediante un sencillo c&oacute;digo, cualquier web puede acceder al contenido de nuestro portapapeles y mas a&uacute;n cuando muchas veces copiamos y pegamos informaci&oacute;n un tanto confidencial.</p>
+
+<p>Un ejemplo de esto lo puedes ver pulsando sobre <a href="http://oeh.network-electronics.com/~olegil/clipboard.html">esta p&aacute;gina de demostraci&oacute;n</a>, siempre y cuando uses Internet Explorer, y podr&aacute;s ver el contenido del portapapeles.</p>
+
+<p>Para evitar esto, desde <i>Herramientas -> Opciones de Internet -> pesta&ntilde;a Seguridad -> Nivel personalizado -> Automatizaci&oacute;n -> Permitir operaciones de pegado por medio de una secuencia de comandos</i>, podemos seleccionar <i>Pedir datos</i> para que avise en caso de que alguna web quiera acceder al portapapeles o <i>Desactivar</i> para rechazarlo siempre.</p>

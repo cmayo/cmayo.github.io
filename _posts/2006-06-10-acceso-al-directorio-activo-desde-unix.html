@@ -1,0 +1,16 @@
+---
+layout: post
+title: Acceso al Directorio Activo desde Unix
+date: '2006-06-10T22:30:00.000+02:00'
+author: Carlos Mayo
+tags:
+- Linux
+- Windows
+modified_time: '2006-11-11T16:05:56.558+01:00'
+blogger_id: tag:blogger.com,1999:blog-10912158.post-114901778228750440
+blogger_orig_url: http://carlosmayo.blogspot.com/2006/06/acceso-al-directorio-activo-desde-unix.html
+---
+
+<p>El otro día pude asistir a un WebCast organizado por Microsoft titulado <a href="http://www.microsoft.com/spain/technet/jornadas/webcasts/060525rec.mspx">Interoperatibilidad con Unix en Windows Server R2</a>. En él se explicaba cómo sincronizar las contraseñas de usuarios entre Windows<=>Unix, cómo migrar el servicio NIS al Directorio Activo de Windows Server 2003 y la forma de autenticar un usuario de UNIX para acceder a una unidad NFS de Windows, todo ello con utilidades desarrolladas por Microsoft para los entornos UNIX. Seguidamente nos mostraron un utilidad llamada VAS (<a href="http://www.vintela.com/">Vintela Authentication Services</a>) para integrar completamente Unix y Linux en el Directorio Activo.</p>
+
+<p>Esto último me pareció realmente interesante pero claro está, era de pago, así que pensé en <a href="http://www.samba.org/">Samba</a> y me puse a buscar por si había algo similar pero libre. Y en efecto, encontré <a href="http://www.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">Winbind</a> el cual permite configurar un equipo Linux como cliente del Directorio Activo mediante ldap y kerberos. Me dispuse a probarlo y siguiendo este <a href="http://www.ssl.ull.es/node/82">HowTo</a> conseguí con éxito registrar un mi equipo Linux en un DA y autenticar a los usuarios en él.</p>
