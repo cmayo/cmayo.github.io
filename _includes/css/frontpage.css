@@ -1,0 +1,55 @@
+      * {
+        padding:0px;
+        margin:0px;
+      }
+      html {
+        background: #fff url(../img/fondo.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100%;
+      }
+
+      body {
+        background: transparent url(../img/bg-pattrensl.png) repeat;
+        font-size:62.5%;
+        font-family: Lato;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        display: table;
+      }
+      .content {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;   
+        color:#fff;
+     
+      }
+
+      h1 {
+        opacity:0;
+        font-size:8em;
+        font-weight: 100;
+        word-spacing: 0.08em;
+      }
+      h1 strong {
+        font-weight: 700;
+      }
+      p {
+                opacity:0;
+        font-family: Helvetica;
+        font-size:2em;
+        font-weight: 100;
+        margin-bottom:1em; 
+      }
+      #connect{text-align: center;        opacity:0;}
+      #connect a{text-decoration: none;padding:3px 5px;border-style: none; color:#fff;font-size:3.2em;font-weight: bold;}
+      #connect a:hover{text-decoration: none;opacity:0.4;border-style: none;}
+      #connect img {border:none;}
+      @media only screen and (max-width : 480px) {
+        h1 {
+          font-size:6em;
+        }
+      }
