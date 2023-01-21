@@ -1,6 +1,6 @@
 # General Jekyll Config
 highlighter: rouge
-url: http://www.carlosmayo.net
+url: https://www.carlosmayo.net
 lsi: false
 permalink: /blog/:categories/:year/:month/:day/:title.html
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
