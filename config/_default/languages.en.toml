@@ -1,0 +1,19 @@
+languageCode = "en"
+languageName = "English"
+languageDirection = "ltr"
+weight = 1
+
+title = "Carlos Mayo | Software developer"
+
+[params]
+  dateFormat = "2 January 2006"
+
+[params.author]
+  name = "Carlos Mayo"
+  image = "img/avatar.jpg"
+  headline = "Software developer"
+  links = [
+    { github = "https://github.com/cmayo" },
+    { linkedin = "https://linkedin.com/in/carlosmayo" },
+    { x-twitter = "https://twitter.com/cmayo" },
+  ]
